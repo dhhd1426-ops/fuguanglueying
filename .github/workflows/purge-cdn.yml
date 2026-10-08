@@ -1,0 +1,30 @@
+name: 刷新 CDN 缓存
+
+# 内容一推上来，就让 jsDelivr 丢掉旧缓存，App 几分钟内就能拿到新内容
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/**"
+  workflow_dispatch:
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: 检查 JSON 格式
+        run: |
+          for f in content/*.json; do
+            python3 -c "import json,sys; json.load(open(sys.argv[1], encoding='utf-8'))" "$f" || { echo "::error::$f 不是合法的 JSON"; exit 1; }
+          done
+
+      - name: 刷新缓存
+        run: |
+          for f in content/*.json; do
+            url="https://purge.jsdelivr.net/gh/${{ github.repository }}@main/$f"
+            echo "刷新 $url"
+            curl -sS --retry 3 "$url"
+            echo
+          done
