@@ -1,0 +1,42 @@
+{
+  "updated": "2026-10-14",
+  "plugins": [
+    {
+      "id": "weather",
+      "name": "天气",
+      "version": "1.0.0",
+      "author": "浮光掠影",
+      "description": "查任意城市当下和未来七天的天气。她回答时会说清楚要不要带伞、穿什么。用 Open-Meteo 的公开数据，不用填 key。",
+      "category": "生活",
+      "repo": "dhhd1426-ops/fuguanglueying/plugins/weather",
+      "ref": "main",
+      "updated": "今天",
+      "permissions": [
+        { "kind": "net", "hosts": ["geocoding-api.open-meteo.com", "api.open-meteo.com"] },
+        { "kind": "storage" }
+      ],
+      "tools": [
+        { "name": "get_weather", "description": "查某个城市今天和未来几天的天气、温度、降雨概率", "note": "正在查天气…" }
+      ],
+      "system": "问到天气、要不要带伞、穿什么时可以查"
+    },
+    {
+      "id": "fx",
+      "name": "汇率",
+      "version": "1.0.0",
+      "author": "浮光掠影",
+      "description": "实时汇率换算，160 多种货币。问「两千美元是多少人民币」直接给数，汇率每天更新一次。",
+      "category": "工具",
+      "repo": "dhhd1426-ops/fuguanglueying/plugins/fx",
+      "ref": "main",
+      "updated": "今天",
+      "permissions": [
+        { "kind": "net", "hosts": ["open.er-api.com"] },
+        { "kind": "storage" }
+      ],
+      "tools": [
+        { "name": "convert", "description": "按当前汇率换算金额", "note": "正在查汇率…" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "weather",
+  "name": "天气",
+  "version": "1.0.0",
+  "author": "浮光掠影",
+  "description": "查任意城市当下和未来七天的天气。她回答时会说清楚要不要带伞、穿什么。用 Open-Meteo 的公开数据，不用填 key。",
+  "category": "生活",
+  "permissions": [
+    { "kind": "net", "hosts": ["geocoding-api.open-meteo.com", "api.open-meteo.com"] },
+    { "kind": "storage" }
+  ],
+  "tools": [
+    {
+      "name": "get_weather",
+      "description": "查某个城市的天气：今天的实时温度和体感，以及未来几天的天气、最高最低温、降雨概率。城市名用中文或英文都行。",
+      "note": "正在查天气…",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "city": { "type": "string", "description": "城市名，如 北京、Shanghai、东京" },
+          "days": { "type": "integer", "description": "要几天的预报，1–7，默认 3" }
+        },
+        "required": ["city"]
+      }
+    }
+  ],
+  "system": "问到天气、要不要带伞、穿什么时可以查"
+}

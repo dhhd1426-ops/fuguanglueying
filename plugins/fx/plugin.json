@@ -1,0 +1,28 @@
+{
+  "id": "fx",
+  "name": "汇率",
+  "version": "1.0.0",
+  "author": "浮光掠影",
+  "description": "实时汇率换算，160 多种货币。问「两千美元是多少人民币」直接给数，汇率每天更新一次。",
+  "category": "工具",
+  "permissions": [
+    { "kind": "net", "hosts": ["open.er-api.com"] },
+    { "kind": "storage" }
+  ],
+  "tools": [
+    {
+      "name": "convert",
+      "description": "按当前汇率把一个金额从一种货币换成另一种。货币用三位代码：CNY 人民币、USD 美元、JPY 日元、EUR 欧元、GBP 英镑、HKD 港币、KRW 韩元。",
+      "note": "正在查汇率…",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "amount": { "type": "number", "description": "金额，默认 1" },
+          "from": { "type": "string", "description": "原货币代码，如 USD" },
+          "to": { "type": "string", "description": "目标货币代码，如 CNY" }
+        },
+        "required": ["from", "to"]
+      }
+    }
+  ]
+}
